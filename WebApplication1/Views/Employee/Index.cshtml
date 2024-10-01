@@ -1,0 +1,49 @@
+﻿@using WebApplication1.Repository
+@model List<Employee>
+@inject IEmployeeRepository Emprepo
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_AdvancedLayout";
+}
+
+<h1>All Employees</h1>
+
+<a asp-action="New" asp-controller="Employee">New</a>
+<div style="border:3px solid ;border-color :blue" id="EmpDetails" >
+
+
+</div>
+<table class="table table-bordered table-hover">
+    @foreach (var item in Model)
+    {
+       <tr>
+           <td>
+               <a href="#" onclick="GetData(@item.Id)">@item.Name</a>
+           </td>
+            @* <td> <partial name="_EmployeeCardPartial" model="item"></partial> </td> *@
+            <td>
+                <a href="/Employee/Edit/@item.Id">Edit</a>
+            </td>
+       </tr>
+    }
+</table> 
+@section Script{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    function GetData(id) { 
+        event.preventDefault();
+        //ajax call 
+        //request from Server 
+            // 1- url
+            // 2- Get | Post
+            // 3- Get Status Code
+            $.ajax({
+                url: "Employee/DetailsUsingPartial/"+id, success: function (result) {
+                    console.log(result);
+                    document.getElementById("EmpDetails").innerHTML = result;
+                }
+            });
+    }
+</script>
+<partial ></partial>
+}

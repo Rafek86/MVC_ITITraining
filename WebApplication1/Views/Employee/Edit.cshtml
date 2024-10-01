@@ -1,0 +1,50 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<form method="post" action="/Employee/SaveEdit/@Model.Id" class="form form-control" style="background-color:lavenderblush">
+   
+    <div>
+        <label for="name">Name</label>
+        <input id="name" type="text" name="Name" value=@Model.Name class="form form-control"/>
+   </div>
+    <div>
+        <label for="Address">Address</label>
+        <input id="Address" type="text" name="Address" value=@Model.Address class="form form-control"/>
+   </div>
+    <div>
+        <label for="Image">Image</label>
+        <input id="Image" type="image" name="Image" value=@Model.Image class="form form-control" />
+   </div>
+    <div>
+        <label for="Salary">Salary</label>
+        <input id="Salary" type="number" name="Salary" value=@Model.Salary class="form form-control"/>
+   </div>
+    <div>
+        <label for="Dept_Id">Dept_Id</label>
+        <select id="Dept_Id" name="Dept_Id" class="form form-control">
+            @foreach (Department item in ViewBag.deptList)
+            {
+                if(Model.Dept_Id== item.Id){
+            <option value="@item.Id" selected>
+                @item.Name
+                    </option>
+                }
+                else
+                {
+                    <option value="@item.Id">
+                        @item.Name
+                    </option>
+                }
+            }
+        </select>
+    
+    </div>
+    <br />
+    <input type="submit" value="save" />
+
+</form>
+

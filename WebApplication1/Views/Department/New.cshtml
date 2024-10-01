@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "New";
+}
+@model Department
+<h1>New</h1>
+
+<a asp-action="Details" asp-controller="Department" asp-route-dept_id="6">show dept_6</a>
+@* @Html.ActionLink("Back to the List Using This Link","Index","Department") *@
+@*@Html.ActionLink("Back to the List Using This Link","Details","Department",routeValues:new {dept_id=1},new {@class="btn-Success"})*@
+@* using Tag HElper Mean You using Post By Defualt*@
+
+<form action="/Department/SaveNew" method="post" class="form-inline" style="background-color:lavenderblush">
+    <div>
+        @* <label for="name">Name</label> *@
+        @* @Html.TextBox("Name"); *@
+
+      @*   @Html.LabelFor(x=>x.Name)
+        @Html.TextBoxFor(x=>x.Name,new {style="color:red",Placeholder="Enter your name" ,@class="form-control"}) *@
+        @* <input id="name" type="text" name="Name" value=@Model.Name class="form-control" /> *@
+        <!--Tag Helper -->
+        <label asp-for="Name"></label>
+        <input class="form form-control" asp-for="Name" />
+    </div>  
+    <br />
+    <div>
+        <label for="ManagerName">ManagerName</label>
+        <input id="ManagerName" type="text" name="ManagerName" value=@Model.ManagerName class="form-control" />
+    </div>
+    <br />
+    <input type="submit" value="Add" class="btn btn-outline-success my-2 my-sm-0" />
+</form>
+
+<a href="/Department/index">Back To list</a>
+<a asp-action ="Index" asp-controller="Department">Back To list</a>
+

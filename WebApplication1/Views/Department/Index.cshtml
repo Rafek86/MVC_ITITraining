@@ -1,0 +1,22 @@
+﻿@model List<Department>
+
+<h1>Index</h1>
+
+<a href="/Department/New">New</a>
+
+<table class="table table-bordered table-hover"style="width :900px ;background-color :azure">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Manager</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.ManagerName</td>
+        </tr>
+    }
+</table>
+
