@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
 using WebApplication1.Repository;
 
@@ -61,20 +60,20 @@ namespace WebApplication1.Controllers
             return View("New",employee);
         }
 
-        [Authorize]//Chexk Cookie 
+        [Authorize]//Check Cookie 
         public IActionResult Index()
         {
             return View(EmpRepo.GetAll());
         }
 
-        //Achor Tag
+        //Anchor Tag
         public IActionResult Edit(int id) {
             Employee empModel = EmpRepo.GetById(id);
             ViewData["deptList"] =DeptRepo.GetAll();
             return View(empModel);
         }
 
-        //Sybmit Save Db
+        //Submit Save Db
         [HttpPost]
         public IActionResult SaveEdit(int id ,Employee emp) {
 

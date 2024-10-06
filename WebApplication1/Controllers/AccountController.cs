@@ -34,7 +34,7 @@ namespace WebApplication1.Controllers
             if (ModelState.IsValid)
             {
                 //check Db
-           var userModel = await userManager.FindByNameAsync(newUser.Username);
+                var userModel = await userManager.FindByNameAsync(newUser.Username);
                 if (userModel != null) 
                 { 
                 bool found = await userManager.CheckPasswordAsync(userModel,newUser.Password);
@@ -70,7 +70,7 @@ namespace WebApplication1.Controllers
                     //signInManager.SignInAsync();ID Name Roles
                     List<Claim> claims = new List<Claim>();
                     claims.Add(new Claim("color", "red"));
-                    await signInManager.SignInWithClaimsAsync(usermodel, isPersistent: true, claims); 
+                    await signInManager.SignInWithClaimsAsync(usermodel, isPersistent: false, claims); 
                     return RedirectToAction("Index", "Employee");
                 }
                 else 

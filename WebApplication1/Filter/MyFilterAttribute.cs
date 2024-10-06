@@ -2,7 +2,7 @@
 
 namespace WebApplication1.Filter
 {
-    public class MyFilterAttribute : Attribute, IActionFilter
+    public class MyFilterAttribute : Attribute, IFilterMetadata 
     {
         public void OnActionExecuted(ActionExecutedContext context)
         {

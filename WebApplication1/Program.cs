@@ -12,8 +12,8 @@ namespace WebApplication1
             var builder = WebApplication.CreateBuilder(args);
 
             //// Add services to the container. => register in Container
-            //1-Builde in Service and Already register in IOC Container "IConfiguration"
-            //2-Builde in Service but not register in IOC Container "AddSession"
+            //1-Build in Service and Already register in IOC Container "IConfiguration"
+            //2-Build in Service but not register in IOC Container "AddSession"
             builder.Services.AddDbContext<ITIEntity>(op => op.UseSqlServer(builder.Configuration.GetConnectionString("cs")));
 
             //Add filter on all application controllers 
@@ -60,7 +60,7 @@ namespace WebApplication1
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-            app.UseStaticFiles();//wwwrot Files(HTML ,CSS ,JS)
+            app.UseStaticFiles();//wwwroot Files(HTML ,CSS ,JS)
 
             app.UseRouting();
 
